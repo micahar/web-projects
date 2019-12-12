@@ -10,7 +10,9 @@ https://www.thecocktaildb.com/api.php
 
 Problems:
     for ingredients and measures, newline not working
+    ** changed to a way that works
     for ingredients and measures, I can't figure out how to not include values with null value
+    ** changed to a different way that works
 -->
 <!doctype html>
 <html lang="en">
@@ -66,7 +68,13 @@ Problems:
 
                     <h4 class="my-3" id="glass"></h4>
                     
-                    <div class="my-3" id="ingredients"></div>
+                    <div class="my-3" id="ingredients1"></div>
+                    <div class="my-3" id="ingredients2"></div>
+                    <div class="my-3" id="ingredients3"></div>
+                    <div class="my-3" id="ingredients4"></div>
+                    <div class="my-3" id="ingredients5"></div>
+                    <div class="my-3" id="ingredients6"></div>
+                    <div class="my-3" id="ingredients7"></div>
 
                     <div class="my-3" id="instructions"></div>
 
@@ -146,13 +154,11 @@ Problems:
 
                         let ingredient1=results.drinks["0"].strIngredient1      // drink ingredients       
                         let ingredient2=results.drinks["0"].strIngredient2;
-                        let ingredient3=results.drinks["0"].strIngredient3;     // if I use if(...3 != null) { let ...3=...3 }
-
+                        let ingredient3=results.drinks["0"].strIngredient3;     // 
                         let ingredient4=results.drinks["0"].strIngredient4;
-
                         let ingredient5=results.drinks["0"].strIngredient5;
-                        // let ingredient6=results.drinks["0"].strIngredient6;
-                        // let ingredient7=results.drinks["0"].strIngredient7;
+                        let ingredient6=results.drinks["0"].strIngredient6;
+                        let ingredient7=results.drinks["0"].strIngredient7;
                         // let ingredient8=results.drinks["0"].strIngredient8;
                         // let ingredient9=results.drinks["0"].strIngredient9;
                         // let ingredient10=results.drinks["0"].strIngredient10;
@@ -162,8 +168,8 @@ Problems:
                         let measure3=results.drinks["0"].strMeasure3;
                         let measure4=results.drinks["0"].strMeasure4;
                         let measure5=results.drinks["0"].strMeasure5;
-                        // let measure6=results.drinks["0"].strMeasure6;
-                        // let measure7=results.drinks["0"].strMeasure7;
+                        let measure6=results.drinks["0"].strMeasure6;
+                        let measure7=results.drinks["0"].strMeasure7;
                         // let measure8=results.drinks["0"].strMeasure8;
                         // let measure9=results.drinks["0"].strMeasure9;
                         // let measure10=results.drinks["0"].strMeasure10;
@@ -198,27 +204,52 @@ Problems:
 // try an if statement?
 
                         /*
+
+                        *****works doing a different way
                             problem: "\n" not working to make newline
                                     same for '\n'
                         
+                        *****works doing a different way
                             Problem: I can't figure out how to not print "null" when null is the value
                                 if I use an if statement above, then this is not defined here and returns error
 
                         */
-                        $('#ingredients').text(measure1 + " " + ingredient1 + " \n" +
-                            "\n" + measure2 + " " + ingredient2 + ' \n'+
-                            "\n" + measure3 + " " + ingredient3 + 
-                            "\n" + measure4 + ingredient4 + 
-                            "\n" + measure5 + ingredient5 
+                        $('#ingredients1').text(measure1 + " " + ingredient1);
+                        $('#ingredients2').text(measure2 + " " + ingredient2);
+
+                        if(results.drinks["0"].strIngredient3 != null){
+                            $('#ingredients3').text(measure3 + " " + ingredient3);
+                        }
+
+                        if(results.drinks["0"].strIngredient4 != null){
+                            $('#ingredients4').text(measure4 + " " + ingredient4);
+                        }
+
+                        if(results.drinks["0"].strIngredient5 != null){
+                            $('#ingredients5').text(measure5 + " " + ingredient5);
+                        }
+
+                        if(results.drinks["0"].strIngredient6 != null){
+                            $('#ingredients5').text(measure6 + " " + ingredient6);
+                        }
+
+                        if(results.drinks["0"].strIngredient7 != null){
+                            $('#ingredients5').text(measure7 + " " + ingredient7);
+                        }
+
+                        //old way
+                         //   "\n" + measure2 + " " + ingredient2 + ' \n ' +
+                        //    "\n" + measure3 + " " + ingredient3 + 
+                           // "\n" + measure4 + ingredient4 + 
+                            //"\n" + measure5 + ingredient5 
                             //"\n" + measure6 + ingredient6  
                             // measure7 + ingredient7 + "\n" +
                             // measure8 + ingredient8 + "\n" +
                             // measure9 + ingredient9 + "\n" +
                             // measure10 + ingredient10 + "\n"                                                                
-                        );                      
-        
+                        //);                           
 
-                        $('#instructions').text("Instructions: " + instructions);
+                        $('#instructions').text("Instructions: \n" + instructions);
 
                     },
 
